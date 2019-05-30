@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include partials/head %> 
+    </head>
+  <body>
+    <% include partials/menu %>
+    <div class="container bg-3 text-center">    
+      <h3><%= page %></h3><br>
+      <div class="row">
+          <form id="formAddUser" name="adduser" method="post" action="/adduser">
+            <div class="form-group">
+                <input id="inputUserName" type="text" placeholder="username" name="username" class="form-control"/>
+                <input id="inputUserEmail" type="text" placeholder="email" name="useremail" class="form-control" />
+                <button id="btnSubmit" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </body>
+  <% include partials/script %>
+</html>

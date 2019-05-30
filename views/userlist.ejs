@@ -1,0 +1,24 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include partials/head %> 
+    </head>
+  <body>
+    <% include partials/menu %>
+    <div class="container bg-3 text-center">    
+      <h3><%= page %></h3><br>
+      <div class="row">
+          <ul class="list-group">
+              <% userlist.forEach(function (user) { %>
+                  <li class="list-group-item">  
+                      <a href=""><%= user.username %></a>  
+                  </li>                                   
+              <% }) %>
+            </ul>
+      </div>
+    </div>
+  </body>
+  <% include partials/script %>
+</html>
