@@ -1,24 +1,50 @@
-
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <% include partials/head %> 
-    </head>
-  <body>
-    <% include partials/menu %>
-    <div class="container bg-3 text-center">    
-      <h3><%= page %></h3><br>
-      <div class="row">
-          <ul class="list-group">
-              <% userlist.forEach(function (user) { %>
-                  <li class="list-group-item">  
-                      <a href=""><%= user.username %></a>  
-                  </li>                                   
-              <% }) %>
-            </ul>
-      </div>
+
+<head>
+  <% include partials/head %>
+</head>
+
+<body>
+  <% include partials/menu %>
+  <div class="container bg-3 text-center">
+    <h3><%= page %></h3><br>
+    <div class="row">
+      <% var i = 0 %>
+      <% userlist.forEach(function (user) { %>
+        <% i += 1 %>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="<%= user.photourl %>" class="card-img-top" alt="...">
+                <div class="card-block">
+                  <h5 class="card-title"><span class="oi oi-person"></span> <%= user.username %></h5>
+                  <p class="card-text"><%= user.userdesc %></p>
+                  <p class="card-text"><span class="oi oi-map-marker"></span> <%= user.userloc %></p>
+                  <a href="#" class="btn btn-primary"><%= user.username %>'s page</a>
+                </div>
+              </div>
+        </div>
+        <% if(i % 6 === 0  ){ %>
+          </div><div class="row">
+        <% } %>
+      <% }) %>
     </div>
-  </body>
-  <% include partials/script %>
+</body>
+<% include partials/script %>
+
 </html>
+
+
+<!-- <% userlist.forEach(function (user) { %>
+  <div class="col">
+      <div class="card" style="width: 18rem;">
+          <img src="<%= user.photourl %>" class="card-img-top" alt="...">
+          <div class="card-block">
+            <h5 class="card-title"><%= user.username %></h5>
+            <p class="card-text"><%= user.userdesc %></p>
+            <p class="card-text"><%= user.userloc %></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+  </div>
+<% }) %> -->
