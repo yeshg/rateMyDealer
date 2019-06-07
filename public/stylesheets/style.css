@@ -22,3 +22,19 @@
 .active>a {
 color: #1abc9c !important;;
 }
+
+
+span.small-caps {
+  font-variant: all-small-caps;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card {
+  border: 1em;
+  border-color: #555555;
+}
