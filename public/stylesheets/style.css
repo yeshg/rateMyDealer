@@ -28,17 +28,10 @@
   color: #0B486B;
 }
 
-.navbar-brand {
-  font-size: 3em;
-}
-
 .navbar-default .navbar-brand {
-  color: #0B486B;
+  color: #e8e8e8;
+  font-size: 3em;
   font-weight: 200;
-}
-
-a.navbar-brand:hover {
-  color: #A8DBA8;
 }
 
 .navbar-default .navbar-brand> {
