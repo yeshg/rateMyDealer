@@ -17,10 +17,10 @@
             <div class="card" style="width: 18rem;">
                 <img src="<%= user.photourl %>" class="card-img-top" alt="...">
                 <div class="card-block">
-                  <h5 class="card-title"><%= user.username %></h5>
+                  <h5 class="card-title"><span class="oi oi-person"></span> <%= user.username %></h5>
                   <p class="card-text"><%= user.userdesc %></p>
-                  <p class="card-text"><%= user.userloc %></p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <p class="card-text"><span class="oi oi-map-marker"></span> <%= user.userloc %></p>
+                  <a href="#" class="btn btn-primary"><%= user.username %>'s page</a>
                 </div>
               </div>
         </div>

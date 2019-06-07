@@ -6,11 +6,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { page: 'Home', menuId: 'home' });
 });
 
-/* GET Hello World page. */
-router.get('/instructions', function(req, res) {
-  res.render('instructions', { page: 'Instructions', menuId: 'instructions' });
-});
-
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
   var db = req.db;                            // extract db object passed to http request
