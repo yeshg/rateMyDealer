@@ -1,6 +1,6 @@
 .bg-3 { 
   background-color: #ffffff;
-  color: #555555;
+  color: #0B486B;
 }
 .container-fluid {
   padding-top: 70px;
@@ -14,13 +14,40 @@
   margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
+  background-color: #3B8686
 }
 .navbar-nav  li a:hover {
-  color: #1abc9c !important;
+  color: #A8DBA8 !important;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #A8DBA8;
+  background-color: #0B486B;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #0B486B;
+}
+
+.navbar-brand {
+  font-size: 3em;
+}
+
+.navbar-default .navbar-brand {
+  color: #0B486B;
+  font-weight: 200;
+}
+
+a.navbar-brand:hover {
+  color: #A8DBA8;
+}
+
+.navbar-default .navbar-brand> {
+  color: #0B486B;
+  font-weight: 200;
 }
 
 .active>a {
-color: #1abc9c !important;;
+color: #A8DBA8 !important;;
 }
 
 
@@ -30,10 +57,15 @@ span.small-caps {
 
 .card-img-top {
   width: 100%;
+  height: 150px;
   object-fit: cover;
 }
 
 .card {
   border: 1em;
   border-color: #555555;
+}
+
+html {
+  background-color: #ffffff;
 }
