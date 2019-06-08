@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 // For MongoDB
 var monk = require('monk');
-var db = monk('localhost:27017/ratemydealer');
+var db = monk('classmongo.engr.oregonstate.edu:27017');
 
 // create index and user routes
 var indexRouter = require('./routes/index');
