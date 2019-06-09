@@ -12,21 +12,22 @@
     <div class="row">
       <% var i = 0 %>
       <% userlist.forEach(function (user) { %>
-        <% i += 1 %>
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <img src="<%= user.photourl %>" class="card-img-top" alt="...">
-                <div class="card-block">
-                  <h5 class="card-title"><span class="oi oi-person"></span> <%= user.username %></h5>
-                  <p class="card-text"><%= user.userdesc %></p>
-                  <p class="card-text"><span class="oi oi-map-marker"></span> <%= user.userloc %></p>
-                  <a href="<%= '/' + user.userid %>" class="btn btn-primary"><%= user.username %>'s page</a>
-                </div>
-              </div>
+      <% i += 1 %>
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+          <img src="<%= user.photourl %>" class="card-img-top" alt="...">
+          <div class="card-block">
+            <h5 class="card-title"><span class="oi oi-person"></span> <%= user.username %></h5>
+            <p class="card-text"><%= user.userdesc %></p>
+            <p class="card-text"><span class="oi oi-map-marker"></span> <%= user.userloc %></p>
+            <a href="<%= '/' + user.userid %>" class="btn btn-primary"><%= user.username %>'s page</a>
+          </div>
         </div>
-        <% if(i % 6 === 0  ){ %>
-          </div><div class="row">
-        <% } %>
+      </div>
+      <% if(i % 6 === 0  ){ %>
+    </div>
+    <div class="row">
+      <% } %>
       <% }) %>
     </div>
 </body>

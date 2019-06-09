@@ -68,19 +68,25 @@
         </div>
 
         <h3>Ratings for <%= user.username %>:</h3>
-
-        <% user.userreviews.forEach(function (review) { %>
         <div class="row">
-            <div class="card" style="width: 18rem;">
-                <div class="card-block">
-                    <h5 class="card-title"><span class="oi oi-person"></span> <%= review[0] %></h5>
-                    <p class="card-text"><%= review[1] %></p>
-                    <p class="card-text"> <%= review[2] %></p>
+            <% var i = 0 %>
+            <% user.userreviews.forEach(function (review) { %>
+            <% i += 1 %>
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-block">
+                        <h5 class="card-title"><span class="oi oi-person"></span> <%= review[0] %></h5>
+                        <p class="card-text"><%= review[1] %></p>
+                        <p class="card-text"> <%= review[2] %></p>
+                    </div>
                 </div>
             </div>
+            <% if(i % 6 === 0  ){ %>
         </div>
-        <% }) %>
-
+        <div class="row">
+            <% } %>
+            <% }) %>
+        </div>
         <div class="row">
 
         </div>
