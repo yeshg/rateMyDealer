@@ -125,14 +125,7 @@ router.post('/:n/addreview', function (req, res) {
     query,
     { $push: { userreviews: review } }).then((updatedDoc) => {
       console.log(updatedDoc.userreviews);
-
-      collection.find({}, {}, function (e, docs) {
-        res.render('user', {                // render userlist (an ejs template) with data passed in docs
-          "user": docs[parseInt(req.params.n)],
-          page: 'Dealer Page',
-          menuId: 'dealerPage'
-        });
-      });
+      res.redirect("/"+req.params.n);
     });
 
 });
