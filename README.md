@@ -6,7 +6,7 @@ for dealers.
 
 Dealer info is stored in database classmongo.engr.oregonstate.edu/cs290_godsey
 
-Project requires locally running mongodb server at address 'localhost:27017/ratemydealer'
+Make sure you set an environment variable `CS290_URI` to the address of the mongodb database you want to use
 
 To start project, enter root directory and run the following:
 
