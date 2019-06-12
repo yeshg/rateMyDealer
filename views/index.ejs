@@ -6,19 +6,15 @@
   <body class = "backgroundimg">
     <% include partials/menu %>
     <div class="container bg-3 text-center">
-      <h3><%= page %></h3><br>
-      <div class="row">
-        <p>Hello, World! Welcome to <%= page %></p>
-        <div class="col-sm-4">
-          <p> This website allows you to create dealers and rate dealers. </p>
-        </div>
-        <div class="col-sm-4">
-          <a href = "userlist" class = "instruct"> Click Here to see a list of dealers.</a>
-        </div>
-        <div class="col-sm-4">
-          <a href = "newUser" class = "instruct"> Click here to create a dealer.</a>
-        </div>
-      </div>
+      <div class = "welcomemsg">WELCOME</div>
+      <div class = "enteroptions">
+      <a href='newUser' class = "option">
+        <div class = "enterbutton"> I am a dealer </div>
+      </a>
+      <a href='userlist' class = "option">
+        <div class = "enterbutton"> I am looking for a dealer</div>
+      </a>
+    </div>
     </div>
   </body>
   <% include partials/script %>
