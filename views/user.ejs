@@ -5,93 +5,87 @@
     <% include partials/head %>
 </head>
 
-<body class = "backgroundimg">
+<body class="backgroundimg">
     <% include partials/menu %>
     <div class="container bg-3 text-center">
         <h3><%= page %></h3><br>
         <div class="row">
-            <img src="<%= user.photourl %>" class="" alt="...">
-            <h5 class="card-title"><span class="oi oi-person"></span> <%= user.username %></h5>
-            <p class="card-text"><%= user.userdesc %></p>
-            <p class="card-text"><span class="oi oi-map-marker"></span> <%= user.userloc %></p>
-            <a href="<%= '/' + user.userid %>" class="btn btn-primary"><%= user.username %>'s page</a>
-        </div>
-        <div class="row">
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Add Rating
-            </button>
-        </div>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create New Rating</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="col-md-6">
+                <img src="<%= user.photourl %>" class="img-fill" alt="...">
+                <h5 class="card-title"><span class="oi oi-person"></span> <%= user.username %></h5>
+                <p class="card-text"><%= user.userdesc %></p>
+                <p class="card-text"><span class="oi oi-map-marker"></span> <%= user.userloc %></p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add Rating
+                </button>
+            </div>
+            <div class="col-md-6">
+                <h3>Ratings for <%= user.username %>:</h3>
+                <div class="row">
+                    <% var i = 0 %>
+                    <% user.userreviews.forEach(function (review) { %>
+                    <% i += 1 %>
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-block">
+                                <h5 class="card-title"><span class="oi oi-person"></span> <%= review[0] %></h5>
+                                <p class="card-text"><%= review[1] %></p>
+                                <p class="card-text"> <%= review[2] %></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form id="formAddReview" name="addreview" method="post"
-                            action="<%= '/' + user.userid %>/addreview">
-                            <div class="form-group">
-                                <label for="exampleInputUname">Reviewer Name</label>
-                                <input id="reviewerName" type="text" placeholder="name" name="reviewerName"
-                                    class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputRating">Numerical rating</label>
-                                <input id="inputNumRat" type="text" placeholder="5" name="numRat"
-                                    class="form-control" />
-                                <small id="numRatHelp" class="form-text text-muted">Please enter an integer between 1-10
-                                    (or whatever you want).</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleReview">Describe your experience with this dealer in words</label>
-                                <input id="inputReview" type="text" placeholder="i was swindled" name="reviewText"
-                                    class="form-control" />
-                                <small id="revHelp" class="form-text text-muted">Please be descriptive.</small>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary" type="submit">Save</button>
-                            </div>
-                        </form>
-                    </div>
+                    <% if(i % 3 === 0  ){ %>
+                </div>
+                <div class="row">
+                    <% } %>
+                    <% }) %>
                 </div>
             </div>
         </div>
-
-        <h3>Ratings for <%= user.username %>:</h3>
-        <div class="row">
-            <% var i = 0 %>
-            <% user.userreviews.forEach(function (review) { %>
-            <% i += 1 %>
-            <div class="col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-block">
-                        <h5 class="card-title"><span class="oi oi-person"></span> <%= review[0] %></h5>
-                        <p class="card-text"><%= review[1] %></p>
-                        <p class="card-text"> <%= review[2] %></p>
-                    </div>
-                </div>
-            </div>
-            <% if(i % 6 === 0  ){ %>
-        </div>
-        <div class="row">
-            <% } %>
-            <% }) %>
-        </div>
-        <div class="row">
-
-        </div>
+    </div>
 
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New Rating</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formAddReview" name="addreview" method="post" action="<%= '/' + user.userid %>/addreview">
+                    <div class="form-group">
+                        <label for="exampleInputUname">Reviewer Name</label>
+                        <input id="reviewerName" type="text" placeholder="name" name="reviewerName"
+                            class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputRating">Numerical rating</label>
+                        <input id="inputNumRat" type="text" placeholder="5" name="numRat" class="form-control" />
+                        <small id="numRatHelp" class="form-text text-muted">Please enter an integer between 1-10
+                            (or whatever you want).</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleReview">Describe your experience with this dealer in words</label>
+                        <input id="inputReview" type="text" placeholder="i was swindled" name="reviewText"
+                            class="form-control" />
+                        <small id="revHelp" class="form-text text-muted">Please be descriptive.</small>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <% include partials/script %>
 
 </html>
