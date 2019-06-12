@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include partials/head %>
+</head>
+
+<body class = "backgroundimg">
+  <% include partials/menu %>
+  <div class="container bg-4">
+    <div class="text-center">
+      <h3><%= page %></h3><br>
+      <div class = "errorstate">Improper dealer information </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6">
+        <form id="formAddUser" name="adduser" method="post" action="/adduser" class="gaand">
+          <div class="form-group">
+            <label for="exampleInputUname">Name</label>
+            <input id="inputUserName" type="text" placeholder="your name" name="username" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input id="inputUserEmail" type="text" placeholder="email" name="useremail" class="form-control" />
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputLocation">Where do you deal?</label>
+            <input id="inputUserLoc" type="text" placeholder="location" name="userloc" class="form-control" />
+            <small id="locHelp" class="form-text text-muted">By giving us your location customers can find you.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputDescription">Describe yourself</label>
+            <input id="inputUserDesc" type="text" placeholder="description" name="userdesc" class="form-control" />
+            <small id="descHelp" class="form-text text-muted">What goods do you sell?</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPhoto">Photo URL</label>
+            <input id="inputUserPhoto" type="text" placeholder="photo url" name="userphoto" class="form-control" />
+          </div>
+          <button id="btnSubmit" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-md-3">
+      </div>
+
+    </div>
+  </div>
+</body>
+<% include partials/script %>
+
+</html>

@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 /* GET Userlist page. */
 router.get('/userlist', function (req, res) {
   var db = req.db;                            // extract db object passed to http request
-  var collection = db.get('usercollection');  // use the collectioin 'usercollection'
+  var collection = db.get('usercollection');  // use the collection 'usercollection'
 
   collection.count({}, function (error, count) {
     console.log(error, count);
@@ -29,6 +29,9 @@ router.get('/newuser', function (req, res) {
   res.render('newuser', { page: 'Add New Dealer', menuId: 'adduser' });
 });
 
+router.get('/newusererr', function (req, res) {
+  res.render('newusererr', { page: 'Error Adding New Dealer', menuId: 'addusererr' });
+});
 /* POST to Add User Service */
 router.post('/adduser', function (req, res) {
 
@@ -43,33 +46,42 @@ router.post('/adduser', function (req, res) {
   var userDesc = req.body.userdesc;
   var userReviews = [];
 
-  // Set our collection
-  var collection = db.get('usercollection');
+  var validater = validateNewUser(userPhoto,res);
+  if (validater !==1){
+    var collection = db.get('usercollection');
 
-  collection.count({}, function (error, count) {
-    // Submit to the DB
-    collection.insert({
-      "userid": count,
-      "username": userName,
-      "email": userEmail,
-      "photourl": userPhoto,
-      "userloc": userLoc,
-      "userdesc": userDesc,
-      "userreviews": userReviews
-    }, function (err, doc) {
-      if (err) {
-        // If it failed, return error
-        res.send("There was a problem adding the information to the database.");
-      }
-      else {
-        // And forward to success page
-        res.redirect("userlist");
-      }
+    collection.count({}, function (error, count) {
+      // Submit to the DB
+      collection.insert({
+        "userid": count,
+        "username": userName,
+        "email": userEmail,
+        "photourl": userPhoto,
+        "userloc": userLoc,
+        "userdesc": userDesc,
+        "userreviews": userReviews
+      }, function (err, doc) {
+        if (err) {
+          // If it failed, return error
+          res.send("There was a problem adding the information to the database.");
+        }
+        else {
+          // And forward to success page
+          res.redirect("userlist");
+        }
+      });
     });
-  });
-
+  }
+  // Set our collection
 });
 
+function validateNewUser(photo, res){
+  if (!photo){
+    //res.send("User photo does not exist");
+    res.render('newusererr', { page: 'Add New Dealer Err', menuId: 'addusererr' });
+    return 1;
+  }
+}
 router.get('/:n', function (req, res, next) {
   console.log("==url params for req:", req.params);
   var n = req.params.n;
